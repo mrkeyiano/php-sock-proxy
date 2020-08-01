@@ -46,6 +46,8 @@ function onConnect( $client ) {
         else {
 
 
+            printf( "[%s]: [%s] bytes in...", $client->getAddress(), strlen($read) );
+
             printf( "[%s] recieved: %s", $client->getAddress(), $read );
 
 
