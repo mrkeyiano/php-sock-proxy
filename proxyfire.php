@@ -37,7 +37,7 @@ function onConnect( $client ) {
 	printf( "[%s] Connected at port %d\n", $client->getAddress(), $client->getPort() );
 	
 	while( true ) {
-		$read = $client->read(1500);
+		$read = $client->read();
 
         if( $read === null ) {
             printf( "[%s] Disconnected\n", $client->getAddress() );
