@@ -44,6 +44,8 @@ function onConnect( $client ) {
             return false;
         }
         else {
+
+
             printf( "[%s] recieved: %s", $client->getAddress(), $read );
 
 
@@ -52,8 +54,6 @@ function onConnect( $client ) {
 
 		if( $read != '' ) {
 		//	$client->send( '[' . date( DATE_RFC822 ) . '] ' . $read  );
-
-            printf( "[%s] bytes in", strlen($read) );
 
             // create remote socket
             $remotesocket = socket_create(AF_INET, SOCK_STREAM, 0) or die("Could not create socket\n");
@@ -66,6 +66,9 @@ function onConnect( $client ) {
             // get responses
          //   while( true ) {
                 $response = $remoteclient->read();
+
+            printf( "[%s]: [%s] bytes in...", $remotehost, strlen($response) );
+
             printf( "[%s] recieved: %s", $remotehost, $response );
 
 
