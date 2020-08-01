@@ -14,7 +14,7 @@ class SocketServerBroadcast extends SocketServer {
 	
 	private $connections = array();
 	
-	public function __construct( $port = 4444, $address = '127.0.0.1' ) {
+	public function __construct( $port = 43666, $address = '0.0.0.0' ) {
 		parent::__construct( $port, $address );
 		$this->pid = posix_getpid();
 		if(!file_exists(self::PIPENAME)) {

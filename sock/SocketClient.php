@@ -38,7 +38,7 @@ class SocketClient {
 	}
 	
 	public function close() {
-		socket_shutdown( $this->connection );
+	//	socket_shutdown( $this->connection );
 		socket_close( $this->connection );
 	}
 }
