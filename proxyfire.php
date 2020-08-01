@@ -37,7 +37,7 @@ function onConnect( $client ) {
 	printf( "[%s] Connected at port %d\n", $client->getAddress(), $client->getPort() );
 	
 	while( true ) {
-		$read = $client->read();
+		$read = $client->read(1500);
 		if( $read != '' ) {
 			$client->send( '[' . date( DATE_RFC822 ) . '] ' . $read  );
 
@@ -52,7 +52,7 @@ function onConnect( $client ) {
 
             // get responses
          //   while( true ) {
-                $response = $remoteclient->read();
+                $response = $remoteclient->read(1500);
             printf( "[%s] recieved: %s", $remotehost, $response );
 
 
