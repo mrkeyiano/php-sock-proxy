@@ -48,7 +48,7 @@ function onConnect( $client ) {
 
             printf( "[%s]: [%s] bytes in...", $client->getAddress(), strlen($read) );
 
-            printf( "\n [%s] recieved: %s", $client->getAddress(), $read );
+            printf( "\n[%s] recieved: %s", $client->getAddress(), $read );
 
 
 
@@ -69,9 +69,9 @@ function onConnect( $client ) {
          //   while( true ) {
             $response = $remoteclient->read();
 
-            printf( "[%s]: [%s] bytes in...", $remotehost, strlen($response) );
+            printf( "\n[%s]: [%s] bytes in...", $remotehost, strlen($response) );
 
-            printf( "[%s] recieved: %s", $remotehost, $response );
+            printf( "\n[%s] recieved: %s", $remotehost, $response );
 
 
 
