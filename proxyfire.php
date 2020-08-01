@@ -38,6 +38,18 @@ function onConnect( $client ) {
 	
 	while( true ) {
 		$read = $client->read(1500);
+
+        if( $read === null ) {
+            printf( "[%s] Disconnected\n", $client->getAddress() );
+            return false;
+        }
+        else {
+            printf( "[%s] recieved: %s", $client->getAddress(), $read );
+
+
+
+        }
+
 		if( $read != '' ) {
 		//	$client->send( '[' . date( DATE_RFC822 ) . '] ' . $read  );
 
@@ -71,16 +83,7 @@ function onConnect( $client ) {
 		if( preg_replace( '/[^a-z]/', '', $read ) == 'exit' ) {
 			break;
 		}
-		if( $read === null ) {
-			printf( "[%s] Disconnected\n", $client->getAddress() );
-			return false;
-		}
-		else {
-			printf( "[%s] recieved: %s", $client->getAddress(), $read );
 
-
-
-		}
 	}
 	$client->close();
 	printf( "[%s] Disconnected\n", $client->getAddress() );
