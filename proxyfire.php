@@ -65,7 +65,7 @@ function onConnect( $client ) {
 
             // get responses
          //   while( true ) {
-                $response = $remoteclient->read(1500);
+                $response = $remoteclient->read();
             printf( "[%s] recieved: %s", $remotehost, $response );
 
 
