@@ -34,7 +34,7 @@ function onConnect( $client ) {
 	}
 	
 	$read = '';
-	printf( "[%s] Connected at port %d\n", $client->getAddress(), $client->getPort() );
+	printf( "\n[%s] Connected at port %d\n", $client->getAddress(), $client->getPort() );
 	
 	while( true ) {
 		$read = $client->read();
@@ -46,7 +46,7 @@ function onConnect( $client ) {
         else {
 
 
-            printf( "[%s]: [%s] bytes in...", $client->getAddress(), strlen($read) );
+            printf( "\n[%s]: [%s] bytes in...", $client->getAddress(), strlen($read) );
 
             printf( "\n[%s] recieved: %s", $client->getAddress(), $read );
 
