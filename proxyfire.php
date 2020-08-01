@@ -39,8 +39,9 @@ function onConnect( $client ) {
 	while( true ) {
 		$read = $client->read(1500);
 		if( $read != '' ) {
-			$client->send( '[' . date( DATE_RFC822 ) . '] ' . $read  );
+		//	$client->send( '[' . date( DATE_RFC822 ) . '] ' . $read  );
 
+            printf( "[%s] bytes in", strlen($read) );
 
             // create remote socket
             $remotesocket = socket_create(AF_INET, SOCK_STREAM, 0) or die("Could not create socket\n");
