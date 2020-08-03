@@ -32,8 +32,8 @@ class SocketClient {
         $firstByte = count($bytes) / 256;
         $secondByte = count($bytes) % 256;
 
-        print_r($firstByte+"\n");
-        print_r($secondByte+"\n");
+        print_r($firstByte);
+        print_r($secondByte);
 
 
 
