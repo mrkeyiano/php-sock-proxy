@@ -33,8 +33,8 @@ class SocketClient {
         $secondByte = count($bytes) % 256;
 
 
-        $byte1 = pack ( 'C', count($firstByte));
-        $byte2 = pack ( 'C', count($secondByte));
+        $byte1 = pack ( 'C', $firstByte);
+        $byte2 = pack ( 'C', $secondByte);
 
         $byteadd = "{$byte1}{$byte2}";
 
