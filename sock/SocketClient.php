@@ -27,7 +27,7 @@ class SocketClient {
         {
             $bytes[] = ord($message[$i]);
         }
-      //  print_r($bytes);
+        print_r($bytes);
 
 
         $firstByte = count($bytes) / 256;
@@ -37,7 +37,16 @@ class SocketClient {
         $byte1 = pack ( 'C', $firstByte);
         $byte2 = pack ( 'C', $secondByte);
 
-        $byteadd = pack ( 'n', "{$byte1}{$byte2}");
+        $byteadd[] = [$byte1, $byte2];
+
+
+      //  $byteadd = pack ( 'n', "{$byte1}{$byte2}");
+
+        $result = 0;
+        foreach ($byteadd as $byteeach) {
+            $result = $result << 8 | $byteeach;
+        }
+
 
         //print_r($firstByte);
         //print_r($secondByte);
@@ -47,7 +56,7 @@ class SocketClient {
 
 
 
-        $messageLength  = $byteadd; // unsigned 16 bit big endian byte order
+        $messageLength  = $result; // unsigned 16 bit big endian byte order
 
 
       //  $messageLength = "{$firstByte}{$secondByte}";
