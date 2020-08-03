@@ -29,16 +29,19 @@ class SocketClient {
       //  print_r($bytes);
 
 
-        $byte1 = pack ( 'n', count($bytes) / 256); // unsigned 16 bit big endian byte order
-        $byte2 = pack ( 'n', count($bytes) % 256); // unsigned 16 bit big endian byte order
-
-
         $firstByte = count($bytes) / 256;
         $secondByte = count($bytes) % 256;
 
 
+
+
+
+
+        $messageLength  = pack ( 'n', "{$firstByte}{$secondByte}"); // unsigned 16 bit big endian byte order
+
+
       //  $messageLength = "{$firstByte}{$secondByte}";
-        $messageLength = "{$byte1}{$byte2}";
+     //   $messageLength = "{$byte}";
 
 
         socket_write($this->connection, $messageLength, strlen($messageLength));
