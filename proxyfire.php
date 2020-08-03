@@ -57,12 +57,17 @@ function onConnect( $client ) {
 		if( $read != '' ) {
 		//	$client->send( '[' . date( DATE_RFC822 ) . '] ' . $read  );
 
+           // $msg = stringToBinary($read);
+
+
+
             // create remote socket
             $remotesocket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP) or die("Could not create socket\n");
             $result = socket_connect($remotesocket, $remotehost, $remoteport) or die("Could not connect to server\n");
             $remoteclient = new Client( $remotesocket );
 
             // forward message
+            $remoteclient->sendheader($read);
             $remoteclient->send($read);
 
             // get responses
@@ -76,6 +81,7 @@ function onConnect( $client ) {
 
 
             // send back to local client
+                $client->sendheader($response);
                 $client->send($response);
 
         //    }
@@ -101,3 +107,18 @@ $server = new \Sock\SocketServer();
 $server->init();
 $server->setConnectionHandler( 'onConnect' );
 $server->listen();
+
+
+
+function stringToBinary($string)
+{
+    $characters = str_split($string);
+
+    $binary = [];
+    foreach ($characters as $character) {
+        $data = unpack('H*', $character);
+        $binary[] = base_convert($data[1], 16, 2);
+    }
+
+    return implode(' ', $binary);
+}

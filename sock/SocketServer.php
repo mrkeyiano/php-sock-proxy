@@ -18,7 +18,8 @@ class SocketServer {
 		$this->port = $port;
 		$this->_listenLoop = false;
 	}
-	
+
+
 	public function init() {
 		$this->_createSocket();
 		$this->_bindSocket();

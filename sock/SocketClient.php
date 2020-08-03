@@ -20,6 +20,24 @@ class SocketClient {
 	public function send( $message ) {	
 		socket_write($this->connection, $message, strlen($message));
 	}
+
+	public function sendheader($message){
+        $bytes = array();
+        for($i = 0; $i < strlen($message); $i++){
+            $bytes[] = ord($message[$i]);
+        }
+        print_r($bytes);
+
+
+        $firstByte = read.Length / 256;
+        $secondByte = read.Length % 256;
+
+
+        $messageLength = [$firstByte, $secondByte ];
+
+        socket_write($this->connection, $messageLength, count($message));
+
+    }
 	
 	public function read($len = 1024) {
 		if ( ( $buf = @socket_read( $this->connection, $len, PHP_BINARY_READ  ) ) === false ) {
