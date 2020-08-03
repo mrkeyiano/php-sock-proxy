@@ -29,9 +29,13 @@ class SocketClient {
         }
        // print_r($bytes);
 
+//
+//        $firstByte = count($bytes) / 256;
+//        $secondByte = count($bytes) % 256;
 
-        $firstByte = count($bytes) / 256;
-        $secondByte = count($bytes) % 256;
+
+        $firstByte = strlen($message) / 256;
+        $secondByte = strlen($message) % 256;
 
 
         $byte1 = pack ( 'C', $firstByte);
