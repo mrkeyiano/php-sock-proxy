@@ -41,7 +41,7 @@ class SocketClient {
         $byte1 = pack ( 'n', $firstByte);
         $byte2 = pack ( 'n', $secondByte);
 
-        $result = $byte1 << 8 | $byte2;
+    //    $result = $byte1 << 8 | $byte2;
 
 
 
