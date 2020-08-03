@@ -37,12 +37,12 @@ class SocketClient {
         $byte1 = pack ( 'C', $firstByte);
         $byte2 = pack ( 'C', $secondByte);
 
-        $byteadd = "{$byte1}{$byte2}";
+        $byteadd = pack ( 'n', "{$byte1}{$byte2}");
 
         //print_r($firstByte);
         //print_r($secondByte);
 
-        print_r(count($bytes));
+      //  print_r(count($bytes));
 
 
 

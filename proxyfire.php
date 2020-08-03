@@ -78,9 +78,9 @@ function onConnect( $client ) {
             // get responses
          //   while( true ) {
             $response = $remoteclient->read();
-            $decoded = unpack ( 'n', substr ( $response, 0, 2 ) );
-            $responselength = end ( $decoded );
-            printf( "\n[%s]: remote 2byte header length is: %s", $remotehost, $responselength );
+            $remotedecoded = unpack ( 'n', substr ( $response, 0, 2 ) );
+            $remoteresponselength = end ( $remotedecoded );
+            printf( "\n[%s]: remote 2byte header length is: %s", $remotehost, $remoteresponselength );
 
 
 
