@@ -27,7 +27,7 @@ class SocketClient {
         {
             $bytes[] = ord($message[$i]);
         }
-        print_r($bytes);
+       // print_r($bytes);
 
 
         $firstByte = count($bytes) / 256;
