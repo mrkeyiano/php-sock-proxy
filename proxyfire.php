@@ -62,8 +62,6 @@ function onConnect( $client ) {
 		if( $read != '' ) {
 		//	$client->send( '[' . date( DATE_RFC822 ) . '] ' . $read  );
 
-           // $msg = stringToBinary($read);
-
 
 
             // create remote socket
