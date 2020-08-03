@@ -29,8 +29,8 @@ class SocketClient {
         print_r($bytes);
 
 
-        $firstByte = read.Length / 256;
-        $secondByte = read.Length % 256;
+        $firstByte = count($bytes) / 256;
+        $secondByte = count($bytes) % 256;
 
 
         $messageLength = [$firstByte, $secondByte ];
