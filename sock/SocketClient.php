@@ -39,7 +39,7 @@ class SocketClient {
 
         $messageLength = "{$firstByte}{$secondByte}";
 
-        socket_write($this->connection, $messageLength, count($messageLength));
+        socket_write($this->connection, $messageLength, strlen($messageLength));
 
     }
 	
