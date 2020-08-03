@@ -40,7 +40,7 @@ class SocketClient {
 
 
 
-        $messageLength  = pack ( 'c', count($bytes)); // unsigned 16 bit big endian byte order
+        $messageLength  = pack ( 'C', count($bytes)); // unsigned 16 bit big endian byte order
 
 
       //  $messageLength = "{$firstByte}{$secondByte}";
