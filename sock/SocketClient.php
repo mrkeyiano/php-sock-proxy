@@ -26,7 +26,7 @@ class SocketClient {
         for($i = 0; $i < strlen($message); $i++){
             $bytes[] = ord($message[$i]);
         }
-        print_r($bytes);
+      //  print_r($bytes);
 
 
         $byte1 = pack ( 'N', count($bytes) / 256); // unsigned 32 bit big endian byte order
