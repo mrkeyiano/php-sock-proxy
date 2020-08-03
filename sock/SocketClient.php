@@ -32,12 +32,14 @@ class SocketClient {
         $firstByte = count($bytes) / 256;
         $secondByte = count($bytes) % 256;
 
+        print_r($firstByte+"\n");
+        print_r($secondByte+"\n");
 
 
 
 
 
-        $messageLength  = pack ( 'n', "{$firstByte}{$secondByte}"); // unsigned 16 bit big endian byte order
+        $messageLength  = pack ( 'n', strlen($message)); // unsigned 16 bit big endian byte order
 
 
       //  $messageLength = "{$firstByte}{$secondByte}";
