@@ -37,33 +37,10 @@ class SocketClient {
         $byte1 = pack ( 'C', $firstByte);
         $byte2 = pack ( 'C', $secondByte);
 
-        $byteadd[] = [$byte1, $byte2];
 
+        socket_write($this->connection, $byte1, strlen($byte1));
+        socket_write($this->connection, $byte2, strlen($byte2));
 
-      //  $byteadd = pack ( 'n', "{$byte1}{$byte2}");
-
-        $result = 0;
-        foreach ($byteadd as $byteeach) {
-            $result = $result << 8 | $byteeach;
-        }
-
-
-        //print_r($firstByte);
-        //print_r($secondByte);
-
-      //  print_r(count($bytes));
-
-
-
-
-        $messageLength  = $result; // unsigned 16 bit big endian byte order
-
-
-      //  $messageLength = "{$firstByte}{$secondByte}";
-     //   $messageLength = "{$byte}";
-
-
-        socket_write($this->connection, $messageLength, strlen($messageLength));
 
     }
 	
