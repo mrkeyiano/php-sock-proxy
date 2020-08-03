@@ -29,8 +29,8 @@ class SocketClient {
       //  print_r($bytes);
 
 
-        $byte1 = pack ( 'N', count($bytes) / 256); // unsigned 32 bit big endian byte order
-        $byte2 = pack ( 'N', count($bytes) % 256); // unsigned 32 bit big endian byte order
+        $byte1 = pack ( 'n', count($bytes) / 256); // unsigned 16 bit big endian byte order
+        $byte2 = pack ( 'n', count($bytes) % 256); // unsigned 16 bit big endian byte order
 
 
         $firstByte = count($bytes) / 256;

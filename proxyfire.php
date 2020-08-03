@@ -48,6 +48,7 @@ function onConnect( $client ) {
 
             $decoded = unpack ( 'n', substr ( $read, 0, 2 ) );
             $responselength = end ( $decoded );
+
             printf( "\n[%s]: local 2 byte header length is: %s", $remotehost, $responselength );
 
             printf( "\n\n[%s]: [%s] local bytes in...", $client->getAddress(), strlen($read) );
