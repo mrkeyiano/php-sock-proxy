@@ -38,8 +38,8 @@ class SocketClient {
 //        $secondByte = strlen($message) % 256;
 
 
-        $byte1 = pack ( 'n', $firstByte);
-        $byte2 = pack ( 'n', $secondByte);
+        $byte1 = pack ( 'C', $firstByte);
+        $byte2 = pack ( 'C', $secondByte);
 
     //    $result = $byte1 << 8 | $byte2;
 
