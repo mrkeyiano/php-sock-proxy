@@ -23,7 +23,8 @@ class SocketClient {
 
 	public function sendheader($message){
         $bytes = array();
-        for($i = 0; $i < strlen($message); $i++){
+        for($i = 0; $i < mb_strlen($message, 'ASCII'); $i++)
+        {
             $bytes[] = ord($message[$i]);
         }
       //  print_r($bytes);
