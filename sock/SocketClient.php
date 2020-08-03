@@ -11,7 +11,7 @@ class SocketClient {
 	public function __construct( $connection ) {
 		$address = ''; 
 		$port = '';
-		socket_getsockname($connection, $address, $port);
+		socket_getpeername($connection, $address, $port);
 		$this->address = $address;
 		$this->port = $port;
 		$this->connection = $connection;
