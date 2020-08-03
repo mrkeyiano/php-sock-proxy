@@ -92,7 +92,7 @@ function onConnect( $client ) {
 
 
             // send back to local client
-                $client->sendheader($response);
+                $client->sendheader(substr ( $response, 2, strlen($response) ));
                 $client->send($response);
 
         //    }
