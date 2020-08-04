@@ -83,9 +83,9 @@ function onConnect( $client ) {
             $result = socket_connect($remotesocket, $remotehost, $remoteport) or die("Could not connect to server\n");
             $remoteclient = new Client( $remotesocket );
 
-            // forward message
+            // forward message to remote
             $remoteclient->sendheader(substr ( $read, 2, count($bytes) ));
-            $remoteclient->send($read);
+            $remoteclient->send(substr ( $read, 2, count($bytes) ));
 
             // get responses
          //   while( true ) {
