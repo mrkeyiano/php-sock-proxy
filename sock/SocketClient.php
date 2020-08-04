@@ -45,7 +45,7 @@ class SocketClient {
 
 
 
-        print_r(strlen($message));
+        print_r(count($bytes));
 
          $bytemain = pack ('n', 400);
        // $bytemain = pack ( 'C*', $firstByte,$secondByte);
