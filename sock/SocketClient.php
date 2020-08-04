@@ -49,7 +49,7 @@ class SocketClient {
 
 
 	
-	public function read($len = 1024) {
+	public function read($len = 1500) {
 		if ( ( $buf = @socket_read( $this->connection, $len, PHP_BINARY_READ  ) ) === false ) {
 				return null;
 		}
