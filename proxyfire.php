@@ -34,7 +34,7 @@ function onConnect( $client ) {
 	}
 	
 	$read = '';
-	printf( "\n[%s] Connected at port %d\n", $client->getAddress(), $client->getPort() );
+	printf( "\n[%s] Connected from port %d\n", $client->getAddress(), $client->getPort() );
 	
 	while( true ) {
 		$read = $client->read();
@@ -143,17 +143,3 @@ $server->init();
 $server->setConnectionHandler( 'onConnect' );
 $server->listen();
 
-
-
-function stringToBinary($string)
-{
-    $characters = str_split($string);
-
-    $binary = [];
-    foreach ($characters as $character) {
-        $data = unpack('H*', $character);
-        $binary[] = base_convert($data[1], 16, 2);
-    }
-
-    return implode(' ', $binary);
-}
