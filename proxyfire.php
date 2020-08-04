@@ -40,7 +40,7 @@ function onConnect( $client ) {
 		$read = $client->read();
 
         if( $read === null ) {
-            printf( "[%s] Disconnected\n", $client->getAddress() );
+            printf( "[%s:%s] Disconnected\n", $client->getAddress(), $client->getPort() );
             return false;
         }
         else {
@@ -49,11 +49,11 @@ function onConnect( $client ) {
             $decoded = unpack ( 'n', substr ( $read, 0, 2 ) );
             $responselength = end ( $decoded );
 
-            printf( "\n[%s]: local 2 byte header length is: %s", $remotehost, $responselength );
+            printf( "\n[%s:%s]: local 2 byte header length is: %s", $remotehost, $remoteport, $responselength );
 
-            printf( "\n\n[%s]: [%s] local bytes in...", $client->getAddress(), strlen($read) );
+            printf( "\n\n[%s:%s]: [%s] local bytes in...", $client->getAddress(), $client->getPort(), $responselength );
 
-            printf( "\n[%s] recieved: %s", $client->getAddress(), $read );
+            printf( "\n[%s:%s] recieved: %s", $client->getAddress(), $client->getPort(), $read );
 
 
 
@@ -104,7 +104,7 @@ function onConnect( $client ) {
 
 	}
 	$client->close();
-	printf( "[%s] Disconnected\n", $client->getAddress() );
+	printf( "[%s:%s] Disconnected\n", $client->getAddress(), $client->getPort() );
 	
 }
 
