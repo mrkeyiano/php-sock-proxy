@@ -58,7 +58,7 @@ function onConnect( $client ) {
 
             printf( "\n[%s:%s]: local 2 byte header length is: %s", $remotehost, $remoteport, $responselength );
 
-            printf( "\n\n[%s:%s]: [%s] local bytes in...", $client->getAddress(), $client->getPort(), count($bytes)-2 );
+            printf( "\n\n[%s:%s]: [%s] local bytes in...", $client->getAddress(), $client->getPort(), count($bytes) );
 
             printf( "\n[%s:%s] recieved: %s", $client->getAddress(), $client->getPort(), $read );
 
@@ -67,9 +67,14 @@ function onConnect( $client ) {
         }
 
 		if( $read != '' ) {
-		//	$client->send( '[' . date( DATE_RFC822 ) . '] ' . $read  );
 
 
+
+            $bytes = array();
+            for($i = 0; $i < mb_strlen($read, 'ASCII'); $i++)
+            {
+                $bytes[] = ord($read[$i]);
+            }
 
             // create remote socket
             $remotesocket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP) or die("Could not create socket\n");
@@ -77,7 +82,7 @@ function onConnect( $client ) {
             $remoteclient = new Client( $remotesocket );
 
             // forward message
-            $remoteclient->sendheader(substr ( $read, 2, strlen($read)-2 ));
+            $remoteclient->sendheader(substr ( $read, 2, count($bytes) ));
             $remoteclient->send($read);
 
             // get responses
@@ -96,14 +101,14 @@ function onConnect( $client ) {
             printf( "\n[%s:%s]: remote 2byte header length is: %s", $remotehost,$remoteport, $remoteresponselength );
 
 
-            printf( "\n[%s:%s]: [%s] remote bytes in...", $remotehost, $remoteport, count($remotebytes)-2  );
+            printf( "\n[%s:%s]: [%s] remote bytes in...", $remotehost, $remoteport, count($remotebytes)  );
 
             printf( "\n[%s:%s] recieved: %s", $remotehost, $remoteport, $response );
 
 
 
             // send back to local client
-                $client->sendheader(substr ( $response, 2, strlen($response)-2 ));
+                $client->sendheader(substr ( $response, 2, count($remotebytes) ));
                 $client->send($response);
 
         //    }
