@@ -46,13 +46,19 @@ function onConnect( $client ) {
         else {
 
 
+        }
+
+		if( $read != '' ) {
+
+
+
             $decoded = unpack ( 'n', substr ( $read, 0, 2 ) );
             $responselength = end ( $decoded );
 
             $bytes = array();
             for($i = 0; $i < mb_strlen($read, 'ASCII'); $i++)
 
-          //  for($i = 0; $i < strlen($read); $i++)
+                //  for($i = 0; $i < strlen($read); $i++)
             {
                 $bytes[] = ord($read[$i]);
             }
@@ -64,11 +70,6 @@ function onConnect( $client ) {
 
             printf( "\n[%s:%s] recieved: %s", $client->getAddress(), $client->getPort(), $read );
 
-
-
-        }
-
-		if( $read != '' ) {
 
 
 
