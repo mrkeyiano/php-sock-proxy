@@ -85,10 +85,18 @@ function onConnect( $client ) {
             $response = $remoteclient->read();
             $remotedecoded = unpack ( 'n', substr ( $response, 0, 2 ) );
             $remoteresponselength = end ( $remotedecoded );
+
+            $remotebytes = array();
+            for($i = 0; $i < mb_strlen($response, 'ASCII'); $i++)
+            {
+                $remotebytes[] = ord($response[$i]);
+            }
+
+
             printf( "\n[%s]: remote 2byte header length is: %s", $remotehost, $remoteresponselength );
 
 
-            printf( "\n[%s]: [%s] remote bytes in...", $remotehost, strlen($response) );
+            printf( "\n[%s]: [%s] remote bytes in...", $remotehost, count($remotebytes)-2  );
 
             printf( "\n[%s] recieved: %s", $remotehost, $response );
 
