@@ -27,7 +27,7 @@ class SocketClient {
         {
             $bytes[] = ord($message[$i]);
         }
-        print_r($bytes);
+     //   print_r($bytes);
 
 //
         $firstByte = count($bytes) / 256;
@@ -46,7 +46,7 @@ class SocketClient {
 
 
        // $bytemain = pack ('N', "{$byte1}{$byte2}");
-        $bytemain = pack ( 'c*', $firstByte,$secondByte);
+        $bytemain = pack ( 's*', $firstByte,$secondByte);
 
 //        socket_write($this->connection, $byte1, strlen($byte1));
 //        socket_write($this->connection, $byte2, strlen($byte2));
