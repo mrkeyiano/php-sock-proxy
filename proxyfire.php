@@ -49,9 +49,16 @@ function onConnect( $client ) {
             $decoded = unpack ( 'n', substr ( $read, 0, 2 ) );
             $responselength = end ( $decoded );
 
+            $bytes = array();
+            for($i = 0; $i < mb_strlen($read, 'ASCII'); $i++)
+            {
+                $bytes[] = ord($read[$i]);
+            }
+
+
             printf( "\n[%s:%s]: local 2 byte header length is: %s", $remotehost, $remoteport, $responselength );
 
-            printf( "\n\n[%s:%s]: [%s] local bytes in...", $client->getAddress(), $client->getPort(), $responselength );
+            printf( "\n\n[%s:%s]: [%s] local bytes in...", $client->getAddress(), $client->getPort(), count($bytes) );
 
             printf( "\n[%s:%s] recieved: %s", $client->getAddress(), $client->getPort(), $read );
 
