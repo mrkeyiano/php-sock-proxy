@@ -93,12 +93,12 @@ function onConnect( $client ) {
             }
 
 
-            printf( "\n[%s]: remote 2byte header length is: %s", $remotehost, $remoteresponselength );
+            printf( "\n[%s:%s]: remote 2byte header length is: %s", $remotehost,$remoteport, $remoteresponselength );
 
 
-            printf( "\n[%s]: [%s] remote bytes in...", $remotehost, count($remotebytes)-2  );
+            printf( "\n[%s:%s]: [%s] remote bytes in...", $remotehost, $remoteport, count($remotebytes)-2  );
 
-            printf( "\n[%s] recieved: %s", $remotehost, $response );
+            printf( "\n[%s:%s] recieved: %s", $remotehost, $remoteport, $response );
 
 
 
