@@ -50,9 +50,9 @@ function onConnect( $client ) {
             $responselength = end ( $decoded );
 
             $bytes = array();
-         //   for($i = 0; $i < mb_strlen($read, 'ASCII'); $i++)
+            for($i = 0; $i < mb_strlen($read, 'ASCII'); $i++)
 
-            for($i = 0; $i < strlen($read); $i++)
+          //  for($i = 0; $i < strlen($read); $i++)
             {
                 $bytes[] = ord($read[$i]);
             }
@@ -94,9 +94,10 @@ function onConnect( $client ) {
             $remoteresponselength = end ( $remotedecoded );
 
             $remotebytes = array();
-           // for($i = 0; $i < mb_strlen($response, 'ASCII'); $i++)
 
-                for($i = 0; $i < strlen($response); $i++)
+            for($i = 0; $i < mb_strlen($response, 'ASCII'); $i++)
+
+             //   for($i = 0; $i < strlen($response); $i++)
             {
                 $remotebytes[] = ord($response[$i]);
             }
