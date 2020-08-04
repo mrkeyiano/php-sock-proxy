@@ -93,6 +93,9 @@ function onConnect( $client ) {
             $remotedecoded = unpack ( 'n', substr ( $response, 0, 2 ) );
             $remoteresponselength = end ( $remotedecoded );
 
+
+
+
             $remotebytes = array();
 
             for($i = 0; $i < mb_strlen($response, 'ASCII'); $i++)
