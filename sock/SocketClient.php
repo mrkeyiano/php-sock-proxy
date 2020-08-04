@@ -46,13 +46,34 @@ class SocketClient {
 
 
     }
+
+
 	
 	public function read($len = 1024) {
-		if ( ( $buf = @socket_read( $this->connection, $len, PHP_BINARY_READ  ) ) === false ) {
-				return null;
-		}
-		
-		return $buf;
+//		if ( ( $buf = @socket_read( $this->connection, $len, PHP_BINARY_READ  ) ) === false ) {
+//				return null;
+//		}
+//
+//		return $buf;
+
+
+        $offset = 0;
+        $socketData = '';
+
+        while ($offset < $len) {
+            if (($data = @socket_read ($this->connection, $len-$offset, PHP_BINARY_READ)) === false) {
+             //   $this->error();
+                return null;
+            }
+
+            $dataLen = strlen ($data);
+            $offset += $dataLen;
+            $socketData .= $data;
+
+            if ($dataLen == 0) { break; }
+        }
+
+        return $socketData;
 	}
 
 	public function getAddress() {
