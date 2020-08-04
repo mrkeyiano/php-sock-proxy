@@ -45,9 +45,9 @@ class SocketClient {
 
 
 
-        print_r(count($bytes));
 
-         $bytemain = pack ('n', 400);
+
+         $bytemain = pack ('n', count($bytes));
        // $bytemain = pack ( 'C*', $firstByte,$secondByte);
 
 //        socket_write($this->connection, $byte1, strlen($byte1));
