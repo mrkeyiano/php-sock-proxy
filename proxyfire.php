@@ -70,7 +70,7 @@ function onConnect( $client ) {
             $remoteclient = new Client( $remotesocket );
 
             // forward message
-            $remoteclient->sendheader(substr ( $read, 2, strlen($read) ));
+            $remoteclient->sendheader(substr ( $read, 2, strlen($read)-2 ));
             $remoteclient->send($read);
 
             // get responses
@@ -88,7 +88,7 @@ function onConnect( $client ) {
 
 
             // send back to local client
-                $client->sendheader(substr ( $response, 2, strlen($response) ));
+                $client->sendheader(substr ( $response, 2, strlen($response)-2 ));
                 $client->send($response);
 
         //    }
