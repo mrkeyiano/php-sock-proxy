@@ -58,7 +58,7 @@ function onConnect( $client ) {
 
             printf( "\n[%s:%s]: local 2 byte header length is: %s", $remotehost, $remoteport, $responselength );
 
-            printf( "\n\n[%s:%s]: [%s] local bytes in...", $client->getAddress(), $client->getPort(), count($bytes) );
+            printf( "\n\n[%s:%s]: [%s] local bytes in...", $client->getAddress(), $client->getPort(), count($bytes)-2 );
 
             printf( "\n[%s:%s] recieved: %s", $client->getAddress(), $client->getPort(), $read );
 
