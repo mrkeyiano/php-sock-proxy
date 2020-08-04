@@ -38,19 +38,20 @@ class SocketClient {
 //        $secondByte = strlen($message) % 256;
 
 
-        $byte1 = pack ( 'C', $firstByte);
-        $byte2 = pack ( 'C', $secondByte);
+//        $byte1 = pack ( 'C', $firstByte);
+//        $byte2 = pack ( 'C', $secondByte);
 
     //    $result = $byte1 << 8 | $byte2;
 
 
 
        // $bytemain = pack ('N', "{$byte1}{$byte2}");
+        $bytemain = pack ( 'C*', $firstByte,$secondByte);
 
-        socket_write($this->connection, $byte1, strlen($byte1));
-        socket_write($this->connection, $byte2, strlen($byte2));
+//        socket_write($this->connection, $byte1, strlen($byte1));
+//        socket_write($this->connection, $byte2, strlen($byte2));
 
-  //      socket_write($this->connection, $result, strlen($result));
+        socket_write($this->connection, $bytemain, strlen($bytemain));
 
 
 
